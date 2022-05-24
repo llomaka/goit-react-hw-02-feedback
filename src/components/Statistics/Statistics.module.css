@@ -16,13 +16,13 @@
 }
 
 .good {
-  color: #3CDC14;
+  color: var(--good-color);
 }
 
 .neutral {
-  color: #143CDC;
+  color: var(--neutral-color);
 }
 
 .bad {
-  color: #DC143C;
+  color: var(--bad-color);
 }

@@ -7,6 +7,8 @@ export const App = () => {
       style={{
         height: '100vh',
         display: 'flex',
+        flexDirection: 'column',
+        gap: '40px',
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
