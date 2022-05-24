@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/llomaka/goit-react-hw-02-feedback/static/css/main.7acaea2f.css",
-    "main.js": "/llomaka/goit-react-hw-02-feedback/static/js/main.acb585d8.js",
+    "main.css": "/llomaka/goit-react-hw-02-feedback/static/css/main.6738985e.css",
+    "main.js": "/llomaka/goit-react-hw-02-feedback/static/js/main.86ef4e29.js",
     "index.html": "/llomaka/goit-react-hw-02-feedback/index.html",
-    "main.7acaea2f.css.map": "/llomaka/goit-react-hw-02-feedback/static/css/main.7acaea2f.css.map",
-    "main.acb585d8.js.map": "/llomaka/goit-react-hw-02-feedback/static/js/main.acb585d8.js.map"
+    "main.6738985e.css.map": "/llomaka/goit-react-hw-02-feedback/static/css/main.6738985e.css.map",
+    "main.86ef4e29.js.map": "/llomaka/goit-react-hw-02-feedback/static/js/main.86ef4e29.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.acb585d8.js"
+    "static/css/main.6738985e.css",
+    "static/js/main.86ef4e29.js"
   ]
 }
