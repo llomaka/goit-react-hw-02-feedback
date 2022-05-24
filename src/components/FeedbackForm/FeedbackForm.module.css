@@ -1,0 +1,13 @@
+.header {
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-evenly;
+}
