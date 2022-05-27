@@ -5,23 +5,19 @@ import styles from './Button.module.css';
 export default class Button extends Component {
   static propTypes = {
     text: PropTypes.string.isRequired,
+    handleClick: PropTypes.func.isRequired
   };
 
   render() {
-  return (
-    <button
-      className={styles.button}
-      type="button"
-      name={this.props.text}
-      // onClick={handleClick}
-    >
-      {this.props.text}
-    </button>
-  )
+    return (
+      <button
+        className={styles.button}
+        type="button"
+        name={this.props.text}
+        onClick={this.props.handleClick}
+      >
+        {this.props.text}
+      </button>
+    )
   }
 }
-
-//   function handleClick(event) {
-//     event.preventDefault();
-//     console.log(event.target);
-//   }
