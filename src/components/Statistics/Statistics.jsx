@@ -4,25 +4,25 @@ import styles from './Statistics.module.css';
 
 export default class Statistics extends Component {
   static propTypes = {
-    state: PropTypes.shape({
+    stats: PropTypes.shape({
       good: PropTypes.number,
       neutral: PropTypes.number,
       bad: PropTypes.number
     })
   };
-  countTotalFeedback = () => (this.props.state.good + this.props.state.neutral + this.props.state.bad);
+  countTotalFeedback = () => (this.props.stats.good + this.props.stats.neutral + this.props.stats.bad);
   countPositiveFeedbackPercentage = () => {
-    if (!this.props.state.good && !this.props.state.neutral && !this.props.state.bad) return 0;
-    else { return Math.round((this.props.state.good / (this.props.state.good + this.props.state.neutral + this.props.state.bad)) * 100); }
+    if (!this.props.stats.good && !this.props.stats.neutral && !this.props.stats.bad) return 0;
+    else { return Math.round((this.props.stats.good / (this.props.stats.good + this.props.stats.neutral + this.props.stats.bad)) * 100); }
   }
   render() {
     return (
       <div>
         <h2 className={styles.header}>Statistics</h2>
         <ul className={styles.list}>
-          <li className={styles.item}>Good: <span className={styles.good}>{this.props.state.good}</span></li>
-          <li className={styles.item}>Neutral: <span className={styles.neutral}>{this.props.state.neutral}</span></li>
-          <li className={styles.item}>Bad: <span className={styles.bad}>{this.props.state.bad}</span></li>
+          <li className={styles.item}>Good: <span className={styles.good}>{this.props.stats.good}</span></li>
+          <li className={styles.item}>Neutral: <span className={styles.neutral}>{this.props.stats.neutral}</span></li>
+          <li className={styles.item}>Bad: <span className={styles.bad}>{this.props.stats.bad}</span></li>
           <li className={styles.item}>Total: {this.countTotalFeedback()}</li>
           <li className={styles.item}>Positive feedback: {this.countPositiveFeedbackPercentage()}%</li>
         </ul>

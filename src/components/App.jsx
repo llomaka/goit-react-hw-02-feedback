@@ -43,7 +43,7 @@ export default class App extends Component {
       >
         <h1 className="main__header">Expresso Cafe Feedback Page</h1>
         <FeedbackForm handleClick={this.handleClick}/>
-        <Statistics state={this.state}/>
+        <Statistics stats={this.state}/>
       </div>
     );
   }
