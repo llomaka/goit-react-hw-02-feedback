@@ -9,6 +9,13 @@ export default class App extends Component {
     bad: 0
   }
 
+  countTotalFeedback = () => (this.state.good + this.state.neutral + this.state.bad);
+
+  countPositiveFeedbackPercentage = () => {
+    if (!this.state.good && !this.state.neutral && !this.state.bad) return 0;
+    else { return Math.round((this.state.good / (this.state.good + this.state.neutral + this.state.bad)) * 100); }
+  }
+
   handleClick = (event) => {
     event.preventDefault();
     const value = event.target.name;
@@ -43,7 +50,13 @@ export default class App extends Component {
       >
         <h1 className="main__header">Expresso Cafe Feedback Page</h1>
         <FeedbackForm handleClick={this.handleClick}/>
-        <Statistics stats={this.state}/>
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+        />
       </div>
     );
   }
