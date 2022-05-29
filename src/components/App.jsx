@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FeedbackForm from "./FeedbackForm/FeedbackForm";
+import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
 import Statistics from "./Statistics/Statistics";
 
 export default class App extends Component {
@@ -8,6 +8,8 @@ export default class App extends Component {
     neutral: 0,
     bad: 0
   }
+
+  getKeys = () => Object.keys(this.state);
 
   countTotalFeedback = () => (this.state.good + this.state.neutral + this.state.bad);
 
@@ -41,7 +43,7 @@ export default class App extends Component {
           height: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          gap: '40px',
+          gap: 20,
           justifyContent: 'center',
           alignItems: 'center',
           fontSize: 40,
@@ -49,7 +51,9 @@ export default class App extends Component {
         }}
       >
         <h1 className="main__header">Expresso Cafe Feedback Page</h1>
-        <FeedbackForm handleClick={this.handleClick}/>
+        <FeedbackOptions
+          options={this.getKeys()}
+          onLeaveFeedback={this.handleClick} />
         <Statistics
           good={this.state.good}
           neutral={this.state.neutral}

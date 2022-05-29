@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Section from "components/Section/Section";
+import Notification from "components/Notification/Notification";
 import styles from './Statistics.module.css';
 
 export default class Statistics extends Component {
@@ -13,16 +15,24 @@ export default class Statistics extends Component {
 
   render() {
     return (
-      <div>
-        <h2 className={styles.header}>Statistics</h2>
-        <ul className={styles.list}>
-          <li className={styles.item}>Good: <span className={styles.good}>{this.props.good}</span></li>
-          <li className={styles.item}>Neutral: <span className={styles.neutral}>{this.props.neutral}</span></li>
-          <li className={styles.item}>Bad: <span className={styles.bad}>{this.props.bad}</span></li>
-          <li className={styles.item}>Total: {this.props.total}</li>
-          <li className={styles.item}>Positive feedback: {this.props.positivePercentage}%</li>
-        </ul>
-      </div>
+      <Section
+        title="Statistics"
+      >
+        {this.props.total
+          ? (
+              <ul className={styles.list}>
+                <li className={styles.item}>Good: <span className={styles.good}>{this.props.good}</span></li>
+                <li className={styles.item}>Neutral: <span className={styles.neutral}>{this.props.neutral}</span></li>
+                <li className={styles.item}>Bad: <span className={styles.bad}>{this.props.bad}</span></li>
+                <li className={styles.item}>Total: {this.props.total}</li>
+                <li className={styles.item}>Positive feedback: {this.props.positivePercentage}%</li>
+              </ul>
+            )
+          : (<Notification
+              message="There is no feedback"
+            />
+          )}
+      </Section>
     )
   }
 }
