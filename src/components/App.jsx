@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import FeedbackOptions from "./FeedbackOptions";
 import Statistics from "./Statistics";
-import styles from './Statistics/Statistics.module.css';
 import Notification from "components/Notification";
+import Section from "./Section";
 
 export default class App extends Component {
   state = {
@@ -23,27 +23,8 @@ export default class App extends Component {
   handleClick = (event) => {
     const { name } = event.target;
     this.setState(prevState => ({
-      ...prevState,
       [name]: prevState[name] + 1,
     }));
-  }
-
-  renderStatistics = () => {
-    if (this.countTotalFeedback()) {
-      return (
-        <ul className={styles.list}>
-          <li className={styles.item}>Good: <span className={styles.good}>{this.state.good}</span></li>
-          <li className={styles.item}>Neutral: <span className={styles.neutral}>{this.state.neutral}</span></li>
-          <li className={styles.item}>Bad: <span className={styles.bad}>{this.state.bad}</span></li>
-          <li className={styles.item}>Total: {this.countTotalFeedback()}</li>
-          <li className={styles.item}>Positive feedback: {this.countPositiveFeedbackPercentage()}%</li>
-        </ul>
-      )
-    } else {
-      return (<Notification
-        message="There is no feedback"
-      />
-      ); }
   }
 
   render() {
@@ -61,12 +42,26 @@ export default class App extends Component {
         }}
       >
         <h1 className="main__header">Expresso Cafe Feedback Page</h1>
-        <FeedbackOptions
-          options={this.getKeys()}
-          onLeaveFeedback={this.handleClick} />
-        <Statistics
-          children={this.renderStatistics()}
-        />
+        <Section title="Please Leave Feedback">
+          <FeedbackOptions
+            options={this.getKeys()}
+            onLeaveFeedback={this.handleClick}
+          />
+        </Section>
+        <Section title="Statistics">
+          {this.countTotalFeedback()
+            ? (<Statistics
+                good={this.state.good}
+                neutral={this.state.neutral}
+                bad={this.state.bad}
+                total={this.countTotalFeedback()}
+                positivePercentage={this.countPositiveFeedbackPercentage()}
+              />)
+            : (<Notification
+                message="There is no feedback"
+              />
+          )}
+        </Section>
       </div>
     );
   }
