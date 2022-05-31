@@ -9,10 +9,11 @@ export default class Section extends Component {
   }
 
   render() {
+    const { title, children } = this.props;
     return (
       <section className={styles.section}>
-        <h2 className={styles.header}>{this.props.title}</h2>
-        {this.props.children}
+        <h2 className={styles.header}>{title}</h2>
+        {children}
       </section>
     )
   }

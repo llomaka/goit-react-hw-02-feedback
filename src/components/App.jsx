@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
-import Statistics from "./Statistics/Statistics";
+import FeedbackOptions from "./FeedbackOptions";
+import Statistics from "./Statistics";
 
 export default class App extends Component {
   state = {
@@ -37,6 +37,7 @@ export default class App extends Component {
   };
 
   render() {
+    const { good, neutral, bad } = this.state;
     return (
       <div
         style={{
@@ -55,9 +56,9 @@ export default class App extends Component {
           options={this.getKeys()}
           onLeaveFeedback={this.handleClick} />
         <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
+          good={good}
+          neutral={neutral}
+          bad={bad}
           total={this.countTotalFeedback()}
           positivePercentage={this.countPositiveFeedbackPercentage()}
         />

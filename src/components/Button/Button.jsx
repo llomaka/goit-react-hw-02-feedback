@@ -9,14 +9,15 @@ export default class Button extends Component {
   };
 
   render() {
+    const { text, handleClick } = this.props;
     return (
       <button
         className={styles.button}
         type="button"
-        name={this.props.text}
-        onClick={this.props.handleClick}
+        name={text}
+        onClick={handleClick}
       >
-        {this.props.text}
+        {text}
       </button>
     )
   }

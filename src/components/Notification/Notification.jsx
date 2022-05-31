@@ -8,8 +8,9 @@ export default class Notification extends Component {
   }
 
   render() {
+    const { message } = this.props;
     return (
-      <p className={styles.text}>{this.props.message}</p>
+      <p className={styles.text}>{message}</p>
     )
   }
 }
