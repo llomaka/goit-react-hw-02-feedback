@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import FeedbackOptions from "./FeedbackOptions";
 import Statistics from "./Statistics";
+import styles from './Statistics/Statistics.module.css';
+import Notification from "components/Notification";
 
 export default class App extends Component {
   state = {
@@ -19,25 +21,32 @@ export default class App extends Component {
   }
 
   handleClick = (event) => {
-    event.preventDefault();
-    const value = event.target.name;
-    this.setState(prevState => {
-      const newState = {
-        ...prevState
-      };
-      if (value === 'good') {
-        newState.good = prevState.good + 1;
-      } else if (value === 'neutral') {
-        newState.neutral = prevState.neutral + 1;
-      } else {
-        newState.bad = prevState.bad + 1;
-      }
-      return newState;
-    })
-  };
+    const { name } = event.target;
+    this.setState(prevState => ({
+      ...prevState,
+      [name]: prevState[name] + 1,
+    }));
+  }
+
+  renderStatistics = () => {
+    if (this.countTotalFeedback()) {
+      return (
+        <ul className={styles.list}>
+          <li className={styles.item}>Good: <span className={styles.good}>{this.state.good}</span></li>
+          <li className={styles.item}>Neutral: <span className={styles.neutral}>{this.state.neutral}</span></li>
+          <li className={styles.item}>Bad: <span className={styles.bad}>{this.state.bad}</span></li>
+          <li className={styles.item}>Total: {this.countTotalFeedback()}</li>
+          <li className={styles.item}>Positive feedback: {this.countPositiveFeedbackPercentage()}%</li>
+        </ul>
+      )
+    } else {
+      return (<Notification
+        message="There is no feedback"
+      />
+      ); }
+  }
 
   render() {
-    const { good, neutral, bad } = this.state;
     return (
       <div
         style={{
@@ -56,11 +65,7 @@ export default class App extends Component {
           options={this.getKeys()}
           onLeaveFeedback={this.handleClick} />
         <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
+          children={this.renderStatistics()}
         />
       </div>
     );
